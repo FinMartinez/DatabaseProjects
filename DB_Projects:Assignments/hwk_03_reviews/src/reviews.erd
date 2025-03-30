@@ -1,0 +1,51 @@
+// CS3810: Principles of Database Systems
+// Instructor: Thyago Mota
+// Student: Fin Martinez
+// Description: An ERD for a Paper Reviewing System
+
+erdiagram reviews
+notation=crowsfoot
+
+entity Papers  { 
+    id: Integer key
+    title:String partial-key
+    abstract:String
+    file_name:String
+}
+
+entity Authors { 
+    first_name:String partial-key
+    last_name:String partial-key
+    email:String key
+}
+
+entity Reviewers { 
+    first_name:String partial-key
+    last_name:String partial-key
+    email:String key
+    phone_number:Integer
+    affiliation:String partial-key
+    interests:String
+}
+
+relationship contributions {
+    Authors[1..N] -> Papers[0..N]
+    main_contact: String
+}
+
+relationship rates {
+    Reviewers[1..N] -> Papers [0..N]
+    technical_merit: Integer
+    readability: Integer
+    originality: Integer
+    relevance: Integer
+    overall_recommendation: String
+}
+
+relationship comments {
+    Reviewers [0..N] -> Authors [0..N]
+}
+
+relationship discusses {
+    Reviewers[1..N] -> Reviewers[1..N]
+}

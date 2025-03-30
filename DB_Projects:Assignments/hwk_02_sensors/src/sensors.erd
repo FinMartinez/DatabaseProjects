@@ -1,0 +1,30 @@
+// CS3810: Principles of Database Systems
+// Instructor: Thyago Mota
+// Student: Fin Martinez
+// Description: An ERD for Sensors
+
+erdiagram sensors
+notation=crowsfoot
+
+entity Sensors { }
+entity Types { }
+entity Manufacturers { }
+entity Measurements { }
+entity Readings { }
+
+
+relationship generate {
+    Readings[0..N] -> Measurements[0..1]
+}
+
+relationship record {
+    Sensors[1] -> Measurements[N]
+}
+
+relationship produce {
+    Manufacturers[1] -> Sensors[0..N]
+}
+
+relationship has {
+    Sensors[0..1] -> Types[0..N]
+}

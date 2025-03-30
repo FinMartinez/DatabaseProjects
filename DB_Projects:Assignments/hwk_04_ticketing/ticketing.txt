@@ -1,0 +1,20 @@
+// CS3810: Principles of Database Systems
+// Instructor: Thyago Mota
+// Student: Fin Martinez
+// Description: An ERD for a Ticketing System
+
+NOTE: text cannot be underlined in .txt files. Therefore, keys are displayed in all caps.
+
+Events(CODE: string, title: string, season: string, year: integer, venue_id: integer)
+Venues(ID: integer, name: string)
+Sectors(VENUE_ID: integer, SECTOR_NUMBER: integer, seats: integer)
+Seats(VENUE_ID: integer, SECTOR_NUMBER: integer, SEAT_NUMBER: integer, status: string)
+EventDays(EVENT_CODE: string, DATE: integer, TIME: integer)
+Customers(EMAIL: string, name: string, address: string, phone: integer, credit_card: string)
+
+priced(VENUE_ID: integer, EVENT_CODE: string, SECTOR_NUMBER: integer, DATE: integer, TIME: integer, price: double)
+purchases(CUST_EMAIL: string, VENUE_ID: integer, EVENT_CODE: string, SECTOR_NUMBER: integer, REQ_SEATS: integer, EVENT_DATE: integer, EVENT_TIME: integer )
+
+Bonus:
+1. Theta join between Seats and EventDays where date=02/20/2023 and time=8:00pm
+1. Natural join between above relation and “priced”
